@@ -53,7 +53,7 @@ def generateMelody(bar, length, scale, chords, start = 0, theme = None):
 		if (length > beat):
 			melody.nextRythm(note[0])
 			melody.nextNote(note[1])
-			beat = beat + note[0]#Tee tahan esim. transponointi sointuihin.
+			beat = beat + note[0]#Tahan voisi tehda esim. transponoinnin sointuihin.
 #			print note
 		else:
 			break
