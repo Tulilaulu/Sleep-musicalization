@@ -45,13 +45,3 @@ def composeSong(analysis_result_json_string, sleep_result_json_string):
 	generateKunquat.patternWriter(music.getLength()+4)
 	#debug.debugRythm(music)
 	debug.debugprint(music)
-
-
-def main():
-	analysis_result_json_string = open("json_export_sample/joonas_2012-05-10 00:00:00_result.json").read()
-	sleep_result_json_string = open("json_export_sample/joonas_2012-05-10 00:00:00_sleep.json").read()
-	
-	composeSong(analysis_result_json_string, sleep_result_json_string)
-
-if __name__ == "__main__":
-	main()
