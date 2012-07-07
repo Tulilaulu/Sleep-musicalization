@@ -16,6 +16,7 @@ lastInterval = 0
 
 #does not care about the fitting of the theme into chords at the moment! It should be implemented or there should be a method for varying the theme.
 def generateTheme(bar, length, scale, chords):#does not use all info at the moment
+	global lastInterval
 	theme = []
 	space = length
 	lastnote = 0
@@ -23,11 +24,15 @@ def generateTheme(bar, length, scale, chords):#does not use all info at the mome
 	while (space > 0):
 		if (theme == []):
 			rythm = 0
+			lastnote = scale[0]
 		else:
 			rythm = probabilities.getRythm(space, theme[-1][0])
+			lastnote = theme[-1][1]
 		space = space - rythm
 		while True:
-			note = lastnote + random.choice(music.step) if music.coinflip() else lastnote + random.choice(music.skip)
+			interval = probabilities.getInterval(lastInterval)
+			note = lastnote + interval
+			lastInterval = interval
 			if (note%1200 in scale and note > -1000 and note < 3000):
 				break
 		theme.append([rythm, note])
