@@ -47,7 +47,7 @@ def coinflip():
 		return True
 	else:
 		return False
-def IHRatTheMoment(beat):
+def respirationAtTheMoment(beat): #actually uses respiration, despite the naming...
 	for a in range(len(IHR)):
 		if (IHR[a][0] > beat):
 			return IHR[a-1][1]

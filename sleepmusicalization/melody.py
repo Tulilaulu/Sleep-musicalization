@@ -66,7 +66,7 @@ def generateMelody(bar, length, scale, chords, start = 0, theme = None):
 		spaceInFrase = frase
 #		print "frase: "+str(frase)
 		while (spaceInFrase > 0): #one frase at a time
-			templength = probabilities.getRythm(spaceInFrase, melody.getLastRythm())#, music.IHRatTheMoment(beat))
+			templength = probabilities.getRythm(spaceInFrase, melody.getLastRythm(), music.respirationAtTheMoment(beat))
 			spaceInFrase = spaceInFrase - templength
 			melody.nextRythm(templength)
 			melody.nextNote(getNextNote(melody, beat, scale, chords, bar))
