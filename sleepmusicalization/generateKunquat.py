@@ -45,8 +45,8 @@ def makeFiles(songdir="kqtc00"):
 #instrument set up
 #by copying
 	shutil.copytree(os.path.join(installation_dir, "ins_00"), songdir+"/ins_00")
-	shutil.copytree(os.path.join(installation_dir, "ins_01"), songdir+"/ins_01")
-	shutil.copytree(os.path.join(installation_dir, "ins_03"), songdir+"/ins_03")
+#	shutil.copytree(os.path.join(installation_dir, "ins_01"), songdir+"/ins_01") 
+#	shutil.copytree(os.path.join(installation_dir, "ins_03"), songdir+"/ins_03")
 #Sine-wave
 #	f = open(songdir+"/ins_00/kqti00/p_connections.json", "w")
 #	f.write('[["gen_00/kqtgXX/C/out_00", "out_00"]]')

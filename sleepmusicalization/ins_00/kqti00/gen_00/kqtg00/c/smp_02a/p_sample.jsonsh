@@ -1,0 +1,11 @@
+
+
+{
+    "format" : "WavPack",
+    "freq" : 44100,
+    "loop_mode" : "uni",
+    "loop_start" : 147200,
+    "loop_end" : 195000
+}
+
+
