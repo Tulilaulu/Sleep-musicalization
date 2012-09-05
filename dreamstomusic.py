@@ -9,34 +9,18 @@ import datetime
 import tempfile
 import os
 import shutil
-import requests
 
 from sleepmusicalization import controller
-
-server = "https://api.beddit.com"
 
 kunquat_export = os.path.expanduser("~/kunquat/bin/kunquat-export")
 
 lame = "/usr/bin/lame"
 
 
-def make_api_request(server, api_selector, username, date, token):
-    "Make an API request and return the resulting JSON document as a string"
-    
-    sleep_url = server + "/api2/user/%s/%d/%02d/%02d/%s?access_token=%s" % (username, date.year, date.month, date.day, api_selector, token)
-    response = requests.get(sleep_url)
-    response.raise_for_status()
-    
-    serialized_json_document = response.text
-    
-    return serialized_json_document
-
-
 def main():
-    parser = argparse.ArgumentParser(description="Fetch Beddit sleep data and compose music.")
-    parser.add_argument("-u", "--username", required=True)
-    parser.add_argument("-d", "--date", required=True)
-    parser.add_argument("-t", "--token", required=True)
+    parser = argparse.ArgumentParser(description="Read Beddit sleep data and compose music.")
+    parser.add_argument("-r", "--result", required=True)
+    parser.add_argument("-s", "--sleep", required=True)
     parser.add_argument("output")
     
     arguments = parser.parse_args()
@@ -49,9 +33,11 @@ def main():
     print "Creating temporary directory", tempdir
     os.chdir(tempdir)
     
-    print "Fetching sleep data"
-    sleep_data_json_string = make_api_request(server, "sleep", username, date, token)
-    result_data_json_string = make_api_request(server, "results", username, date, token)
+    print "Reading sleep data"
+    with open(arguments.sleep) as sleep_file:
+        sleep_data_json_string = sleep_file.read()
+    with open(arguments.result) as result_file:
+        result_data_json_string = result_file.read()
     
     print "Generating music"
     controller.composeSong(result_data_json_string, sleep_data_json_string)
