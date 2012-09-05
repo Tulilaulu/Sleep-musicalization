@@ -25,10 +25,6 @@ def main():
     
     arguments = parser.parse_args()
     
-    date = datetime.datetime.strptime(arguments.date, "%Y-%m-%d").date()
-    username = arguments.username
-    token = arguments.token
-    
     tempdir = tempfile.mkdtemp()
     print "Creating temporary directory", tempdir
     os.chdir(tempdir)
